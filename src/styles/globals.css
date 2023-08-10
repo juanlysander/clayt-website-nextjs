@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap");
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Mukta", sans-serif;
+}
+.bgColorSkeleton {
+  background-color: #dfdede;
+}
+.bgColor-1 {
+  background-color: hsl(20, 44%, 86%);
+}
+.bgColor-2 {
+  background-color: hsl(20, 44%, 77%);
+}
+.bgColor-3 {
+  background-color: hsl(20, 44%, 68%);
+}
+.bgColor-4 {
+  background-color: hsl(20, 44%, 59%);
+}
+.bgColor-5 {
+  background-color: hsl(20, 44%, 50%);
+}
+.bgColor-6 {
+  background-color: hsl(20, 44%, 41%);
+}
+.bgColor-7 {
+  background-color: hsl(20, 44%, 32%);
+}
+.bgColor-8 {
+  background-color: hsl(20, 44%, 23%);
+}
+.bgColor-9 {
+  background-color: hsl(20, 44%, 14%);
+}
+.textColor {
+  color: hsl(20, 44%, 23%);
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: #070707;
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(20, 44%, 41%);
+  border-radius: 20px;
+  border: 1px solid #e7e8e8;
+}
+
+.spinner {
+  animation: spin 0.4s linear infinite;
+}
+
+.hover:hover {
+  border-bottom: 4px solid #97593b;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
