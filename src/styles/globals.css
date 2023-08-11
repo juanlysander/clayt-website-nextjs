@@ -8,7 +8,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Mukta", sans-serif;
+  font-family: "Mukta", 'Trebuchet MS', sans-serif;
 }
 .bgColorSkeleton {
   background-color: #dfdede;
@@ -58,7 +58,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {

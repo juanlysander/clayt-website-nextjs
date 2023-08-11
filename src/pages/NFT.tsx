@@ -1,8 +1,4 @@
-import {
-  useAddress,
-  useContract,
-  useContractRead,
-} from "@thirdweb-dev/react";
+import { useAddress, useContract, useContractRead } from "@thirdweb-dev/react";
 import { CAT_QUIZ_CONTRACT_ADDRESS } from "../data/addresses";
 import Navbar from "../components/Navbar";
 import Quiz from "../components/Quiz";
@@ -61,20 +57,21 @@ const Sigdrop = () => {
                 ))
               )
             ) : (
-              <div className="w-96">
+              // QUIZ ON LOADING
+              <div className="w-[480px]">
                 <Skeleton className=" mb-7 w-full text-2xl rounded-lg bgColorSkeleton">
                   <div className="h-8 rounded-lg bgColor-3"></div>
                 </Skeleton>
-                <Skeleton className=" px-4 py-1 my-2 mx-0 rounded-lg bgColorSkeleton">
+                <Skeleton className=" px-4 py-1 my-2 mx-0 h-14 rounded-lg bgColorSkeleton">
                   <div className="h-14 rounded-lg bgColor-3"></div>
                 </Skeleton>
-                <Skeleton className=" px-4 py-1 my-2 mx-0 rounded-lg bgColorSkeleton">
+                <Skeleton className=" px-4 py-1 my-2 mx-0 h-14 rounded-lg bgColorSkeleton">
                   <div className="h-14 rounded-lg bgColor-3"></div>
                 </Skeleton>
-                <Skeleton className=" px-4 py-1 my-2 mx-0 rounded-lg bgColorSkeleton">
+                <Skeleton className=" px-4 py-1 my-2 mx-0 h-14 rounded-lg bgColorSkeleton">
                   <div className="h-14 rounded-lg bgColor-3"></div>
                 </Skeleton>
-                <Skeleton className=" px-4 py-1 mt-2 mb-5 mx-0 rounded-lg bgColorSkeleton">
+                <Skeleton className=" px-4 py-1 mt-2 mb-5 mx-0 h-14 rounded-lg bgColorSkeleton">
                   <div className="h-14 rounded-lg bgColor-3"></div>
                 </Skeleton>
                 <Skeleton className=" h-11 w-40 px-4 py-1 my-2 mx-0 rounded-lg bgColorSkeleton">
@@ -84,9 +81,12 @@ const Sigdrop = () => {
             )}
           </div>
         ) : (
-          <div className=" flex flex-col justify-center items-center w-2/6">
-            <Spinner size="lg" color="warning"/>
-            <h2 className=" mt-5 text-sm font-extralight textColor">Please connect your wallet</h2>
+          // WALLET NOT CONNECTED
+          <div className=" flex flex-col justify-center items-center w-[480px]">
+            <Spinner size="lg" color="warning" />
+            <h2 className=" mt-5 text-sm font-extralight textColor">
+              Please connect your wallet
+            </h2>
           </div>
         )}
       </div>

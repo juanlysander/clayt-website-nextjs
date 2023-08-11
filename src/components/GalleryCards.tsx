@@ -6,6 +6,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import { motion } from "framer-motion";
 
 interface GalleryCardsProps {
   img: string;
@@ -48,6 +49,18 @@ export default function GalleryCards({
     <>
       <div className=" p-2 shadow-lg rounded-lg bg-white">
         <div className="relative" style={{ height: `${height}px` }}>
+          {/* FACOURITE ICON TOP LEFT SIDE */}
+          {isFavourited ? (
+            <FavoriteIcon
+              className="text-red-500 absolute z-10 top-5 left-5 transition-all -translate-y-1/2 -translate-x-1/2"
+              style={{ fontSize: "28px" }}
+            />
+          ) : (
+            <FavoriteIcon
+              className=" text-red-300 absolute z-10 top-5 left-5 transition-all -translate-y-1/2 -translate-x-1/2"
+              style={{ fontSize: "0px" }}
+            />
+          )}
           <Image
             src={`/${img}.jpg`}
             alt="Custom Order Image"
@@ -55,6 +68,7 @@ export default function GalleryCards({
             placeholder="blur"
             blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNc5MdgDAADrwElB9bogwAAAABJRU5ErkJggg=="
             sizes="100%"
+            loading="eager"
             quality={60}
             style={{
               objectFit: "cover",
@@ -72,6 +86,8 @@ export default function GalleryCards({
             </Chip>
           ))}
         </div>
+
+        {/* INTERACTION SECTION */}
         <div className=" w-full flex justify-end items-center gap-2 mt-5">
           {isFavourited ? (
             <Tooltip
@@ -79,12 +95,16 @@ export default function GalleryCards({
               content="Unfavourite"
               classNames={{ base: "textColor" }}
             >
-              <div onClick={handleFavouriteClick}>
+              <motion.div
+                className=" outline-none"
+                whileTap={{ scale: 0.5 }}
+                onClick={handleFavouriteClick}
+              >
                 <FavoriteIcon
                   className="text-red-500 cursor-pointer"
                   style={{ fontSize: "18px" }}
                 />
-              </div>
+              </motion.div>
             </Tooltip>
           ) : (
             <Tooltip
@@ -92,12 +112,16 @@ export default function GalleryCards({
               content="Favourite"
               classNames={{ base: "textColor" }}
             >
-              <div onClick={handleFavouriteClick}>
+              <motion.div
+                className=" outline-none"
+                whileTap={{ scale: 0.5 }}
+                onClick={handleFavouriteClick}
+              >
                 <FavoriteBorderOutlinedIcon
                   className="text-gray-400 cursor-pointer"
                   style={{ fontSize: "18px" }}
                 />
-              </div>
+              </motion.div>
             </Tooltip>
           )}
           {isLiked ? (
@@ -106,12 +130,16 @@ export default function GalleryCards({
               content="Dislike"
               classNames={{ base: "textColor" }}
             >
-              <div onClick={handleLikeClick}>
+              <motion.div
+                className=" outline-none"
+                whileTap={{ scale: 0.5 }}
+                onClick={handleLikeClick}
+              >
                 <ThumbUpIcon
                   className="text-blue-500 cursor-pointer"
                   style={{ fontSize: "18px" }}
                 />
-              </div>
+              </motion.div>
             </Tooltip>
           ) : (
             <Tooltip
@@ -119,12 +147,16 @@ export default function GalleryCards({
               content="Like"
               classNames={{ base: "textColor" }}
             >
-              <div onClick={handleLikeClick}>
+              <motion.div
+                className=" outline-none"
+                whileTap={{ scale: 0.5 }}
+                onClick={handleLikeClick}
+              >
                 <ThumbUpOutlinedIcon
                   className="text-gray-400 cursor-pointer"
                   style={{ fontSize: "18px" }}
                 />
-              </div>
+              </motion.div>
             </Tooltip>
           )}
         </div>

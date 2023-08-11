@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Web3Button, useContract, useContractRead } from "@thirdweb-dev/react";
 import { CAT_QUIZ_CONTRACT_ADDRESS } from "../data/addresses";
-import Spinner from "./Spinner";
 import { Skeleton } from "@nextui-org/react";
+import { motion } from "framer-motion";
 
 export default function Quiz() {
   const { contract: catQuizContract } = useContract(CAT_QUIZ_CONTRACT_ADDRESS);
@@ -15,20 +15,23 @@ export default function Quiz() {
   const [answerIndex, setAnswerIndex] = useState<number>();
 
   return (
-    <div className=" w-max">
+    <motion.div 
+      animate={isQuizLoading ? "loading" : "finish" }
+      variants={{ loading: {opacity: 0}, finish: {opacity: 1}}}
+      className=" w-[480px]">
       {!isQuizLoading ? (
         <div>
-          <h2 className=" mb-7 text-2xl textColor">{quiz[0]}</h2>
+          <h2 className=" mb-7 text-xl textColor">{quiz[0]}</h2>
           {quiz[1].map((answer: string, index: number) => (
             <div
               key={index}
+              className=" px-4 py-1 my-2 mx-0 h-14 rounded-md cursor-pointer border-none flex justify-start items-center hover"
               onClick={() => setAnswerIndex(index)}
               style={{
                 backgroundColor: answerIndex === index ? "#97593B" : "#e6ccb2",
                 color: answerIndex === index ? "#ffffff" : "#97593B",
                 transition: "all 0.1s ease-in-out",
               }}
-              className=" px-4 py-1 my-2 mx-0 h-14 rounded-md cursor-pointer border-none flex justify-start items-center hover"
             >
               <p>{answer}</p>
             </div>
@@ -54,20 +57,20 @@ export default function Quiz() {
           </Web3Button>
         </div>
       ) : (
-        <div className="w-96">
+        <div className="w-[480px]">
           <Skeleton className=" mb-7 w-full text-2xl rounded-lg bgColorSkeleton">
             <div className="h-8 rounded-lg bgColor-3"></div>
           </Skeleton>
-          <Skeleton className=" px-4 py-1 my-2 mx-0 rounded-lg bgColorSkeleton">
+          <Skeleton className=" px-4 py-1 my-2 mx-0 h-14 rounded-lg bgColorSkeleton">
             <div className="h-14 rounded-lg bgColor-3"></div>
           </Skeleton>
-          <Skeleton className=" px-4 py-1 my-2 mx-0 rounded-lg bgColorSkeleton">
+          <Skeleton className=" px-4 py-1 my-2 mx-0 h-14 rounded-lg bgColorSkeleton">
             <div className="h-14 rounded-lg bgColor-3"></div>
           </Skeleton>
-          <Skeleton className=" px-4 py-1 my-2 mx-0 rounded-lg bgColorSkeleton">
+          <Skeleton className=" px-4 py-1 my-2 mx-0 h-14 rounded-lg bgColorSkeleton">
             <div className="h-14 rounded-lg bgColor-3"></div>
           </Skeleton>
-          <Skeleton className=" px-4 py-1 mt-2 mb-5 mx-0 rounded-lg bgColorSkeleton">
+          <Skeleton className=" px-4 py-1 mt-2 mb-5 mx-0 h-14 rounded-lg bgColorSkeleton">
             <div className="h-14 rounded-lg bgColor-3"></div>
           </Skeleton>
           <Skeleton className=" h-11 w-40 px-4 py-1 my-2 mx-0 rounded-lg bgColorSkeleton">
@@ -75,6 +78,6 @@ export default function Quiz() {
           </Skeleton>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

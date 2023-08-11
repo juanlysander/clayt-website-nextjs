@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import backgroundImage from "../../public/galleryBg.jpg";
+import { motion } from "framer-motion";
 
 interface HeaderImageProps {
   img: string;
@@ -19,6 +20,7 @@ function HeaderImage({ img }: HeaderImageProps) {
             src={backgroundImage}
             placeholder="blur"
             fill
+            loading="eager"
             priority
             quality={60}
             style={{
@@ -27,20 +29,25 @@ function HeaderImage({ img }: HeaderImageProps) {
             }}
             className="rounded"
           />
-          <div className=" absolute flex flex-col justify-center items-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className=" absolute flex flex-col justify-center items-center"
+          >
             <Image
               src={`/${img}.svg`}
               priority
-              alt="clayt logo"
+              alt="Page Title"
               width={460}
               height={300}
             />
-          </div>
+          </motion.div>
           <div className=" absolute flex flex-col justify-center items-center">
             <Image
               src="/clayt.svg"
               priority
-              alt="clayt logo"
+              alt="Clayt Logo"
               width={240}
               height={30}
             />

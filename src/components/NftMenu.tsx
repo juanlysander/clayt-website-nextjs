@@ -6,10 +6,6 @@ export default function NftMenu() {
   const [isActive, setIsActive] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
-  const toggleClass = () => {
-    setIsActive(!isActive);
-  };
-
   const handleClickOutside = (event: MouseEvent) => {
     if (
       menuRef.current &&
@@ -30,7 +26,7 @@ export default function NftMenu() {
     <div className="relative" ref={menuRef}>
       <div
         className="flex justify-center items-center h-14 pe-5 text-white hover:text-orange-200 transition-all cursor-pointer"
-        onClick={toggleClass}
+        onClick={() => setIsActive(!isActive)}
       >
         <p className="text-base font-thin">NFT</p>
         <ArrowDropDownIcon className="text-white" />
@@ -50,7 +46,7 @@ export default function NftMenu() {
                 opacity: "0",
                 visibility: "hidden",
                 zIndex: 1,
-                scale: "94%"
+                scale: "94%",
               }
         }
       >

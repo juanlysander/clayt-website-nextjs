@@ -41,7 +41,6 @@ function Navbar() {
             >
               <p className=" text-base font-thin">Contact</p>
             </Link>
-
             <NftMenu />
             <ConnectWallet
               theme="light"

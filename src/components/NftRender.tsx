@@ -1,7 +1,7 @@
 import { CAT_NFT_CONTRACT_ADDRESS } from "../data/addresses";
 import { useContract, useContractRead } from "@thirdweb-dev/react";
-import NextImage from "next/image";
-import {Image} from "@nextui-org/react";
+import Image from "next/image";
+import catImage from "../../public/nft.png"
 
 export default function NftRender() {
   const { contract } = useContract(CAT_NFT_CONTRACT_ADDRESS);
@@ -18,15 +18,13 @@ export default function NftRender() {
         className=" p-5 rounded-lg max-w-xs bgColor-6"
       >
         <Image
-          as={NextImage}
-          src="/nft.png"
+          src={catImage}
           alt="NFT Image"
           className="rounded-lg mb-3"
           width={288}
           height={288}
-          isZoomed
-          loading="lazy"
-          quality={100}
+          placeholder="blur"
+          quality={70}
         />
         <h2 className=" text-2xl text-white mb-2 font-semibold">
           Purr-fectly Clayt Cats
